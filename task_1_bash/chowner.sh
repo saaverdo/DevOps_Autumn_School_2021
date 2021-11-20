@@ -14,16 +14,16 @@ err_exit(){
     exit 1
 }
 
-if [ $EUID -ne 0 ]; then
+if [ "$EUID" -ne 0 ]; then
     ERR_MSG="User is not root" 
     err_exit;
-elif [ $# -ne 2 ]; then
+elif [ "$#" -ne 2 ]; then
     ERR_MSG="wrong number of arguments"
     err_exit;
-elif [ ! $(id -u $1) ] ; then 
+elif [ ! $(id -u "$1") ] ; then 
     ERR_MSG="user $1 does not exist"
     err_exit;
-elif [ ! -d $2 ]; then 
+elif [ ! -d "$2" ]; then 
     ERR_MSG="$2 is not directory"
     err_exit;
 fi
